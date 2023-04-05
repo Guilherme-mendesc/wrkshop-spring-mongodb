@@ -1,5 +1,6 @@
  package com.guilhermemc.wrkshopmongo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ public class PostService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 		}
 	
+	// metedo desativado por motivo de que tambem e possivel buscar por querys direto...
+	//public List<Post> findByTitle(String text){
+	//	return repo.findByTitleContainingIgnoreCase(text);
+	//}
 	
+	public List<Post> findByTitle(String text) {
+		return repo.searchTitle(text);
+	}
 
 }
